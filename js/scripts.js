@@ -1,27 +1,32 @@
-// Carrusel de imágenes
-const carouselImages = document.querySelectorAll('.carousel img');
+// Seleccionamos todas las diapositivas del carrusel
+const slides = document.querySelectorAll('.slide');
 const prevButton = document.querySelector('.carousel-btn.prev');
 const nextButton = document.querySelector('.carousel-btn.next');
-let currentImageIndex = 0;
+let currentSlideIndex = 0;
 
-function showImage(index) {
-    carouselImages.forEach((img, i) => {
-        img.style.display = (i === index) ? 'block' : 'none';
-    });
+// Función para mostrar la diapositiva actual
+function showSlide(index) {
+    // Eliminamos la clase "active" de todas las diapositivas
+    slides.forEach((slide) => slide.classList.remove('active'));
+    
+    // Agregamos la clase "active" solo a la diapositiva actual
+    slides[index].classList.add('active');
 }
 
+// Función para mostrar la siguiente diapositiva
 nextButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
-    showImage(currentImageIndex);
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    showSlide(currentSlideIndex);
 });
 
+// Función para mostrar la diapositiva anterior
 prevButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
-    showImage(currentImageIndex);
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    showSlide(currentSlideIndex);
 });
 
-// Mostrar la primera imagen al cargar la página
-showImage(currentImageIndex);
+// Mostramos la primera diapositiva al cargar la página
+showSlide(currentSlideIndex);
 // Slider de productos
 const productosSlider = document.querySelector('.productos-slider');
 const prevProdBtn = document.querySelector('.prev-prod');
