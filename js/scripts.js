@@ -5,28 +5,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
-            slide.classList.remove('active');
+            slide.classList.remove('active'); // Oculta todas las imágenes
             if (i === index) {
-                slide.classList.add('active');
+                slide.classList.add('active'); // Muestra la imagen actual
             }
         });
     }
 
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        showSlide(currentIndex);
+        currentIndex = (currentIndex + 1) % totalSlides; // Incrementa el índice
+        showSlide(currentIndex); // Muestra la nueva imagen
     }
 
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        showSlide(currentIndex);
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Decrementa el índice
+        showSlide(currentIndex); // Muestra la nueva imagen
     }
 
+    // Event listeners para los botones
     document.querySelector('.next').addEventListener('click', nextSlide);
     document.querySelector('.prev').addEventListener('click', prevSlide);
+
+    // Cambiar imagen automáticamente cada 5 segundos
     setInterval(nextSlide, 5000);
 });
-
     // Slider de Productos
     const productSlider = document.querySelector('.productos-slider');
     let isDown = false;
