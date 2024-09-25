@@ -11,20 +11,17 @@ body {
     color: #333;
 }
 
-/* Barra de Navegación */
+header .logo img {
+    width: 150px;
+}
+
+/* Barra de Navegación Responsiva */
 header {
-    background-color: #2d6a4f;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-header .logo img {
-    width: 150px;
+    background-color: #2d6a4f;
 }
 
 .navbar ul {
@@ -46,6 +43,45 @@ header .logo img {
     border-radius: 5px;
 }
 
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #2d6a4f;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
 /* Carrusel del Banner Principal */
 .carousel {
     position: relative;
