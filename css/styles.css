@@ -11,8 +11,27 @@ body {
     color: #333;
 }
 
-header .logo img {
-    width: 150px;
+/* Ajustes del logo */
+.logo img {
+    max-width: 120px; /* Ajustamos el tamaño del logo */
+    height: auto;
+    margin-right: 20px; /* Espacio entre el logo y la barra de navegación */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2d6a4f;
+    position: relative;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        max-width: 100px; /* Redimensionamos el logo para pantallas más pequeñas */
+    }
 }
 
 /* Barra de Navegación Responsiva */
