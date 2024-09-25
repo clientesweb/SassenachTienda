@@ -95,7 +95,79 @@ header {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+/* Sección Cursos y Talleres */
+.cursos-talleres {
+    padding: 60px 20px;
+    background-color: #f5f5f5; /* Fondo claro */
+    text-align: center; /* Centramos el texto */
+}
 
+.cursos-talleres h2 {
+    font-size: 2.5rem;
+    color: #2e7d32; /* Color del encabezado */
+    margin-bottom: 40px;
+}
+
+.cursos-talleres-container {
+    display: flex; /* Usamos flexbox para alinear los contenedores */
+    justify-content: center; /* Centramos los contenedores */
+    gap: 20px; /* Espacio entre contenedores */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+.curso-taller {
+    background-color: white; /* Fondo blanco para los contenedores */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 0 1 300px; /* Flexibilidad en el tamaño */
+    transition: transform 0.3s ease; /* Transición suave para el hover */
+}
+
+.curso-taller:hover {
+    transform: translateY(-5px); /* Efecto de elevación en hover */
+}
+
+.curso-taller h3 {
+    font-size: 1.5rem;
+    color: #2d6a4f; /* Color del título */
+    margin-bottom: 10px;
+}
+
+.curso-taller p {
+    color: #4e4e4e; /* Color del texto */
+    margin-bottom: 20px;
+}
+
+.btn-inscribirse {
+    background-color: #2d6a4f; /* Color del botón */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.btn-inscribirse:hover {
+    background-color: #40916c; /* Color del botón al pasar el cursor */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .cursos-talleres h2 {
+        font-size: 2rem; /* Tamaño de fuente más pequeño */
+    }
+
+    .cursos-talleres-container {
+        flex-direction: column; /* Apilamos los contenedores en pantallas pequeñas */
+        align-items: center; /* Centramos los elementos */
+    }
+
+    .curso-taller {
+        width: 90%; /* Ancho del contenedor en pantallas pequeñas */
+    }
+}
 /* Estilos para el menú inferior */
 .bottom-nav {
     display: none;
