@@ -122,7 +122,11 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex: 0 1 300px; /* Flexibilidad en el tamaño */
     transition: transform 0.3s ease; /* Transición suave para el hover */
-    text-align: center; /* Centra el texto y los elementos dentro del curso */
+    display: flex; /* Usamos flexbox para alinear contenido */
+    flex-direction: column; /* Alineamos el contenido en columna */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    height: 350px; /* Fijo para uniformidad */
 }
 
 .curso-taller:hover {
@@ -138,6 +142,45 @@ header {
 .curso-taller p {
     color: #4e4e4e; /* Color del texto */
     margin-bottom: 20px;
+}
+
+/* Estilos para las imágenes */
+.curso-imagen {
+    width: 100%; /* Hace que la imagen ocupe el ancho completo del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+    margin-bottom: 15px; /* Espacio debajo de la imagen */
+}
+
+.btn-inscribirse {
+    background-color: #2d6a4f; /* Color del botón */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.btn-inscribirse:hover {
+    background-color: #40916c; /* Color del botón al pasar el cursor */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .cursos-talleres h2 {
+        font-size: 2rem; /* Tamaño de fuente más pequeño */
+    }
+
+    .cursos-talleres-container {
+        flex-direction: column; /* Apilamos los contenedores en pantallas pequeñas */
+        align-items: center; /* Centramos los elementos */
+    }
+
+    .curso-taller {
+        width: 90%; /* Ancho del contenedor en pantallas pequeñas */
+        height: auto; /* Altura automática en pantallas pequeñas */
+    }
 }
 
 /* Estilos para las imágenes */
