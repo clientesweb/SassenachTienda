@@ -44,44 +44,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Slider de Productos
     const productSlider = document.querySelector('.productos-slider');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    const prevProdBtn = document.querySelector('.prev-prod');
+    const nextProdBtn = document.querySelector('.next-prod');
+    let slidePosition = 0;
 
-    productSlider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - productSlider.offsetLeft;
-        scrollLeft = productSlider.scrollLeft;
-    });
+    function moveSlider(direction) {
+        const slideWidth = document.querySelector('.producto').offsetWidth + 20; // Ancho del producto + gap
+        const maxSlidePosition = productSlider.scrollWidth - productSlider.clientWidth;
 
-    productSlider.addEventListener('mouseleave', () => {
-        isDown = false;
-    });
+        if (direction === 'next') {
+            slidePosition = Math.min(slidePosition + slideWidth, maxSlidePosition);
+        } else {
+            slidePosition = Math.max(slidePosition - slideWidth, 0);
+        }
 
-    productSlider.addEventListener('mouseup', () => {
-        isDown = false;
-    });
+        productSlider.style.transform = `translateX(-${slidePosition}px)`;
+    }
 
-    productSlider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - productSlider.offsetLeft;
-        const walk = (x - startX) * 2;
-        productSlider.scrollLeft = scrollLeft - walk;
-    });
-
-    // Scroll suave para dispositivos táctiles
-    productSlider.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].pageX - productSlider.offsetLeft;
-        scrollLeft = productSlider.scrollLeft;
-    });
-
-    productSlider.addEventListener('touchmove', (e) => {
-        if (!startX) return;
-        const x = e.touches[0].pageX - productSlider.offsetLeft;
-        const walk = (x - startX) * 2;
-        productSlider.scrollLeft = scrollLeft - walk;
-    });
+    prevProdBtn.addEventListener('click', () => moveSlider('prev'));
+    nextProdBtn.addEventListener('click', () => moveSlider('next'));
 
     // Menú inferior
     const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
