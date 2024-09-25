@@ -1,50 +1,88 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navbar = document.querySelector('.navbar');
+    // Carrusel
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
+    }
+
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopSlideshow();
+        startSlideshow();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopSlideshow();
+        startSlideshow();
+    });
+
+    startSlideshow();
+
+    // Slider de Productos
+    const productSlider = document.querySelector('.productos-slider');
+    const prevProdBtn = document.querySelector('.prev-prod');
+    const nextProdBtn = document.querySelector('.next-prod');
+    let slidePosition = 0;
+
+    function moveSlider(direction) {
+        const slideWidth = document.querySelector('.producto').offsetWidth + 20; // Ancho del producto + gap
+        const maxSlidePosition = productSlider.scrollWidth - productSlider.clientWidth;
+
+        if (direction === 'next') {
+            slidePosition = Math.min(slidePosition + slideWidth, maxSlidePosition);
+        } else {
+            slidePosition = Math.max(slidePosition - slideWidth, 0);
+        }
+
+        productSlider.style.transform = `translateX(-${slidePosition}px)`;
+    }
+
+    prevProdBtn.addEventListener('click', () => moveSlider('prev'));
+    nextProdBtn.addEventListener('click', () => moveSlider('next'));
+
+    // Menú inferior
     const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
 
-    menuToggle.addEventListener('click', function() {
-        navbar.classList.toggle('active');
-        this.classList.toggle('active');
-
-        if (this.classList.contains('active')) {
-            this.setAttribute('aria-expanded', 'true');
-        } else {
-            this.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Cerrar el menú al hacer clic en un enlace (para móviles)
-    const navLinks = document.querySelectorAll('.navbar a, .bottom-nav-item');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navbar.classList.remove('active');
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-    });
-
-    // Actualizar el ítem activo en el menú inferior
     bottomNavItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             bottomNavItems.forEach(navItem => navItem.classList.remove('active'));
             item.classList.add('active');
+            
+            // Desplazamiento suave a la sección correspondiente
+            const targetId = item.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
-    // Manejar cambios de tamaño de ventana
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            navbar.classList.remove('active');
-            menuToggle.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Manejar el desplazamiento para resaltar el ítem activo en el menú inferior
+    // Actualizar ítem activo del menú inferior al hacer scroll
     window.addEventListener('scroll', () => {
         const scrollPosition = window.scrollY;
         const sections = document.querySelectorAll('section');
@@ -61,53 +99,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-// Seleccionamos todas las diapositivas del carrusel
-const slides = document.querySelectorAll('.slide');
-const prevButton = document.querySelector('.carousel-btn.prev');
-const nextButton = document.querySelector('.carousel-btn.next');
-let currentSlideIndex = 0;
-
-// Función para mostrar la diapositiva actual
-function showSlide(index) {
-    // Eliminamos la clase "active" de todas las diapositivas
-    slides.forEach((slide) => slide.classList.remove('active'));
-    
-    // Agregamos la clase "active" solo a la diapositiva actual
-    slides[index].classList.add('active');
-}
-
-// Función para mostrar la siguiente diapositiva
-nextButton.addEventListener('click', () => {
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    showSlide(currentSlideIndex);
-});
-
-// Función para mostrar la diapositiva anterior
-prevButton.addEventListener('click', () => {
-    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    showSlide(currentSlideIndex);
-});
-
-// Mostramos la primera diapositiva al cargar la página
-showSlide(currentSlideIndex);
-// Slider de productos
-const productosSlider = document.querySelector('.productos-slider');
-const prevProdBtn = document.querySelector('.prev-prod');
-const nextProdBtn = document.querySelector('.next-prod');
-let scrollAmount = 0;
-
-nextProdBtn.addEventListener('click', () => {
-    productosSlider.scrollBy({ left: 300, behavior: 'smooth' });
-});
-
-prevProdBtn.addEventListener('click', () => {
-    productosSlider.scrollBy({ left: -300, behavior: 'smooth' });
-});
-// Menú hamburguesa
-const mobileMenu = document.querySelector('#mobile-menu');
-const navbarMenu = document.querySelector('.navbar ul');
-
-mobileMenu.addEventListener('click', () => {
-    navbarMenu.classList.toggle('active');
-    mobileMenu.classList.toggle('is-active');
+    });
 });
