@@ -1,19 +1,27 @@
-// Funcionalidad del carrusel
-const slides = document.querySelector('.slides');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let currentSlide = 0;
+// Carrusel de imágenes
+const carouselImages = document.querySelectorAll('.carousel img');
+const prevButton = document.querySelector('.carousel-btn.prev');
+const nextButton = document.querySelector('.carousel-btn.next');
+let currentImageIndex = 0;
 
-nextBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % 3;  // Suponemos que hay 3 slides
-    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+function showImage(index) {
+    carouselImages.forEach((img, i) => {
+        img.style.display = (i === index) ? 'block' : 'none';
+    });
+}
+
+nextButton.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+    showImage(currentImageIndex);
 });
 
-prevBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + 3) % 3;
-    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+prevButton.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
+    showImage(currentImageIndex);
 });
 
+// Mostrar la primera imagen al cargar la página
+showImage(currentImageIndex);
 // Slider de productos
 const productosSlider = document.querySelector('.productos-slider');
 const prevProdBtn = document.querySelector('.prev-prod');
