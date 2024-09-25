@@ -1,76 +1,105 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    // Carrusel
     const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentSlide = 0;
+    let slideInterval;
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active'); // Oculta todas las imágenes
-            if (i === index) {
-                slide.classList.add('active'); // Muestra la imagen actual
-            }
-        });
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
     }
 
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides; // Incrementa el índice
-        showSlide(currentIndex); // Muestra la nueva imagen
+        showSlide(currentSlide + 1);
     }
 
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Decrementa el índice
-        showSlide(currentIndex); // Muestra la nueva imagen
+        showSlide(currentSlide - 1);
     }
 
-    // Event listeners para los botones
-    document.querySelector('.next').addEventListener('click', nextSlide);
-    document.querySelector('.prev').addEventListener('click', prevSlide);
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
+    }
 
-    // Cambiar imagen automáticamente cada 5 segundos
-    setInterval(nextSlide, 5000);
-});
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopSlideshow();
+        startSlideshow();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopSlideshow();
+        startSlideshow();
+    });
+
+    startSlideshow();
+
     // Slider de Productos
     const productSlider = document.querySelector('.productos-slider');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    const prevProdBtn = document.querySelector('.prev-prod');
+    const nextProdBtn = document.querySelector('.next-prod');
+    let slidePosition = 0;
 
-    productSlider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - productSlider.offsetLeft;
-        scrollLeft = productSlider.scrollLeft;
+    function moveSlider(direction) {
+        const slideWidth = document.querySelector('.producto').offsetWidth + 20; // Ancho del producto + gap
+        const maxSlidePosition = productSlider.scrollWidth - productSlider.clientWidth;
+
+        if (direction === 'next') {
+            slidePosition = Math.min(slidePosition + slideWidth, maxSlidePosition);
+        } else {
+            slidePosition = Math.max(slidePosition - slideWidth, 0);
+        }
+
+        productSlider.style.transform = `translateX(-${slidePosition}px)`;
+    }
+
+    prevProdBtn.addEventListener('click', () => moveSlider('prev'));
+    nextProdBtn.addEventListener('click', () => moveSlider('next'));
+
+    // Menú inferior
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+
+    bottomNavItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            bottomNavItems.forEach(navItem => navItem.classList.remove('active'));
+            item.classList.add('active');
+            
+            // Desplazamiento suave a la sección correspondiente
+            const targetId = item.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     });
 
-    productSlider.addEventListener('mouseleave', () => {
-        isDown = false;
-    });
+    // Actualizar ítem activo del menú inferior al hacer scroll
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const sections = document.querySelectorAll('section');
 
-    productSlider.addEventListener('mouseup', () => {
-        isDown = false;
-    });
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionBottom = sectionTop + section.offsetHeight;
 
-    productSlider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - productSlider.offsetLeft;
-        const walk = (x - startX) * 2;
-        productSlider.scrollLeft = scrollLeft - walk;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                const correspondingNavItem = document.querySelector(`.bottom-nav-item[href="#${section.id}"]`);
+                if (correspondingNavItem) {
+                    bottomNavItems.forEach(item => item.classList.remove('active'));
+                    correspondingNavItem.classList.add('active');
+                }
+            }
+        });
     });
-
-    // Scroll suave para dispositivos táctiles
-    productSlider.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].pageX - productSlider.offsetLeft;
-        scrollLeft = productSlider.scrollLeft;
-    });
-
-    productSlider.addEventListener('touchmove', (e) => {
-        if (!startX) return;
-        const x = e.touches[0].pageX - productSlider.offsetLeft;
-        const walk = (x - startX) * 2;
-        productSlider.scrollLeft = scrollLeft - walk;
-    });
-
-    // ... (código posterior sin cambios) ...
 });
 
     // Menú inferior
