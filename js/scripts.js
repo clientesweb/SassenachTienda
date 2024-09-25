@@ -16,18 +16,16 @@ prevBtn.addEventListener('click', () => {
 
 // Slider de productos
 const productosSlider = document.querySelector('.productos-slider');
-productosSlider.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    productosSlider.scrollLeft += e.deltaY * 10;  // Desplazamiento horizontal con el scroll
-});
-// Funcionalidad para "Añadir al Carrito"
-const botonesComprar = document.querySelectorAll('.btn-comprar');
+const prevProdBtn = document.querySelector('.prev-prod');
+const nextProdBtn = document.querySelector('.next-prod');
+let scrollAmount = 0;
 
-botonesComprar.forEach(boton => {
-    boton.addEventListener('click', () => {
-        alert('Producto añadido al carrito');
-        // Aquí puedes añadir más lógica para gestionar el carrito.
-    });
+nextProdBtn.addEventListener('click', () => {
+    productosSlider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+prevProdBtn.addEventListener('click', () => {
+    productosSlider.scrollBy({ left: -300, behavior: 'smooth' });
 });
 // Menú hamburguesa
 const mobileMenu = document.querySelector('#mobile-menu');
