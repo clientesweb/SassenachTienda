@@ -1,60 +1,4 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-/* Barra de Navegación Superior */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #2d6a4f;
-    position: relative;
-    z-index: 1000;
-}
-
-.logo {
-    display: flex;
-    justify-content: center;
-}
-
-.navbar {
-    display: flex;
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: #40916c;
-    border-radius: 5px;
-}
-
-/* Ajustes del logo */
-.logo img {
-    max-width: 100px;
-    height: auto;
-}
+/* Estilos existentes... */
 
 /* Estilos para el menú inferior */
 .bottom-nav {
@@ -86,171 +30,35 @@ header {
 }
 
 .bottom-nav-item.active {
-    color: #4CAF50;
-}
-
-/* Estilo del carrusel */
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 60vh;
-    overflow: hidden;
-}
-
-.slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 0;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slide.active {
-    opacity: 1;
-    z-index: 1;
-}
-
-/* Botones de navegación del carrusel */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.carousel-btn.prev {
-    left: 10px;
-}
-
-.carousel-btn.next {
-    right: 10px;
-}
-
-.caption {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.caption h2 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.caption p {
-    margin: 5px 0 0;
-    font-size: 16px;
-}
-
-/* Slider de Productos */
-.productos-destacados {
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.slider-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.productos-slider {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.3s ease;
-}
-
-.producto {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
-    transition: transform 0.3s ease;
-}
-
-.producto img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.slider-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-}
-
-.prev-prod {
-    left: 10px;
-}
-
-.next-prod {
-    right: 10px;
-}
-
-/* Footer */
-footer {
-    background-color: #2d6a4f;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    color: #4CAF50; /* Color primario de Sassenach, ajusta según tu paleta de colores */
 }
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .navbar {
-        display: none;
+        display: none; /* Oculta completamente la barra de navegación superior en móviles */
     }
 
     .bottom-nav {
-        display: flex;
+        display: flex; /* Muestra el menú inferior en móviles */
     }
 
+    /* Ajusta el padding del contenido principal para dar espacio al menú inferior */
     body {
         padding-bottom: 60px;
     }
 
+    /* Ajustes adicionales para mejorar la visualización en móviles */
     .logo {
         text-align: center;
         padding: 10px 0;
     }
 
     .logo img {
-        max-width: 80px;
+        max-width: 150px; /* Ajusta según sea necesario */
     }
 
+    /* Ajustes para el carrusel en móviles */
     .carousel .caption {
         padding: 10px;
     }
@@ -263,6 +71,7 @@ footer {
         font-size: 1em;
     }
 
+    /* Ajustes para la sección de productos destacados en móviles */
     .productos-destacados h2 {
         font-size: 1.5em;
     }
@@ -270,12 +79,6 @@ footer {
     .producto h3 {
         font-size: 1.2em;
     }
-
-    .producto {
-        min-width: 250px;
-    }
-
-    header {
-        flex-direction: column;
-    }
 }
+
+/* Resto de tus estilos existentes... */
