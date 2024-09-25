@@ -88,4 +88,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aquí puedes agregar el código existente para el carrusel y el slider de productos
 });
 
-// Resto de tu código JavaScript existente...
+// Resto de tu código JavaScript existente..
