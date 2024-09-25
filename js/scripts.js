@@ -16,7 +16,22 @@ prevBtn.addEventListener('click', () => {
 
 // Slider de productos
 const productosSlider = document.querySelector('.productos-slider');
-productosSlider.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    productosSlider.scrollLeft += e.deltaY * 10;  // Desplazamiento horizontal con el scroll
+const prevProdBtn = document.querySelector('.prev-prod');
+const nextProdBtn = document.querySelector('.next-prod');
+let scrollAmount = 0;
+
+nextProdBtn.addEventListener('click', () => {
+    productosSlider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+prevProdBtn.addEventListener('click', () => {
+    productosSlider.scrollBy({ left: -300, behavior: 'smooth' });
+});
+// Menú hamburguesa
+const mobileMenu = document.querySelector('#mobile-menu');
+const navbarMenu = document.querySelector('.navbar ul');
+
+mobileMenu.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+    mobileMenu.classList.toggle('is-active');
 });
