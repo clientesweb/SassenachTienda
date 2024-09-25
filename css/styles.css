@@ -10,7 +10,7 @@ body {
     background-color: #f4f4f9;
     color: #333;
 }
-/* Barra de Navegación Responsiva */
+/* Barra de Navegación Superior */
 header {
     display: flex;
     justify-content: center; /* Centrar el logo */
@@ -58,76 +58,29 @@ header {
 
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Cambiar a columna en dispositivos móviles */
+        display: none; /* Ocultar el header en dispositivos móviles */
     }
 
-    .logo img {
-        max-width: 100px; /* Redimensionamos el logo para pantallas más pequeñas */
-    }
-
-    .navbar {
-        display: none; /* Ocultar la barra de navegación por defecto */
-    }
-
-    .navbar.active {
-        display: flex; /* Mostrar barra de navegación si está activa */
-        flex-direction: column; /* Alinear verticalmente los elementos */
-        position: absolute;
-        bottom: 60px; /* Espacio entre el menú y la barra inferior */
-        left: 0;
-        right: 0;
-        background-color: #2d6a4f; /* Fondo de la barra */
-        text-align: center; /* Centrar texto */
-        padding: 10px 0;
-    }
-
-    .menu-toggle {
-        display: flex; /* Mostrar botón de menú en dispositivos móviles */
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 21px;
-        cursor: pointer;
-        margin-bottom: 10px; /* Espacio entre el menú y la barra inferior */
-    }
-
-    .menu-toggle .bar {
-        height: 3px;
-        width: 100%;
-        background-color: white;
-        border-radius: 10px;
-        transition: 0.3s ease;
-    }
-}
-
-/* Barra Inferior */
-.navbar-bottom {
-    display: none; /* Ocultar por defecto */
-    background-color: #2d6a4f; /* Fondo de la barra inferior */
-    position: fixed; /* Fijar en la parte inferior */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-.navbar-bottom ul {
-    display: flex;
-    justify-content: space-around; /* Espaciado uniforme entre los elementos */
-    list-style: none;
-    padding: 10px 0; /* Espaciado en la parte superior e inferior */
-}
-
-.navbar-bottom ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 10px;
-}
-
-@media (max-width: 768px) {
     .navbar-bottom {
         display: flex; /* Mostrar la barra inferior en dispositivos móviles */
+        background-color: #2d6a4f; /* Fondo de la barra inferior */
+        position: fixed; /* Fijar en la parte inferior */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .navbar-bottom ul {
+        display: flex;
+        justify-content: space-around; /* Espaciado uniforme entre los elementos */
+        list-style: none;
+        padding: 10px 0; /* Espaciado en la parte superior e inferior */
+    }
+
+    .navbar-bottom ul li a img {
+        max-width: 24px; /* Ajustar el tamaño de los iconos */
+        height: auto; /* Mantener la proporción */
     }
 }
 /* Estilo del carrusel */
