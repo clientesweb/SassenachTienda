@@ -1,4 +1,60 @@
-/* Estilos existentes... */
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Barra de Navegación Superior */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2d6a4f;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #40916c;
+    border-radius: 5px;
+}
+
+/* Ajustes del logo */
+.logo img {
+    max-width: 100px;
+    height: auto;
+}
 
 /* Estilos para el menú inferior */
 .bottom-nav {
@@ -30,35 +86,238 @@
 }
 
 .bottom-nav-item.active {
-    color: #4CAF50; /* Color primario de Sassenach, ajusta según tu paleta de colores */
+    color: #4CAF50;
+}
+
+/* Estilo del carrusel */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Ajusta esta altura según tus necesidades */
+    overflow: hidden;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto asegura que la imagen cubra todo el espacio sin distorsionarse */
+    object-position: center; /* Centra la imagen */
+}
+
+/* Botones de navegación del carrusel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 2;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.caption h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.caption p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .carousel {
+        height: 40vh; /* Altura reducida para móviles */
+    }
+
+    .caption h2 {
+        font-size: 20px;
+    }
+
+    .caption p {
+        font-size: 14px;
+    }
+
+    .carousel-btn {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+}
+/* Slider de Productos */
+.productos-destacados {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.productos-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 10px 5px;
+}
+
+.productos-slider::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.productos-slider::-webkit-scrollbar-thumb {
+    background: #2d6a4f;
+    border-radius: 10px;
+}
+
+.productos-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.producto {
+    flex: 0 0 auto;
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.producto h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-weight: bold;
+    color: #2d6a4f;
+    margin-bottom: 15px;
+}
+
+.btn-comprar {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background-color: #40916c;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .producto {
+        width: 250px;
+    }
+
+    .producto img {
+        height: 150px;
+    }
+}
+
+/* ... (estilos posteriores sin cambios) ... */
+/* Footer */
+footer {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .navbar {
-        display: none; /* Oculta completamente la barra de navegación superior en móviles */
+        display: none;
     }
 
     .bottom-nav {
-        display: flex; /* Muestra el menú inferior en móviles */
+        display: flex;
     }
 
-    /* Ajusta el padding del contenido principal para dar espacio al menú inferior */
     body {
         padding-bottom: 60px;
     }
 
-    /* Ajustes adicionales para mejorar la visualización en móviles */
     .logo {
         text-align: center;
         padding: 10px 0;
     }
 
     .logo img {
-        max-width: 150px; /* Ajusta según sea necesario */
+        max-width: 80px;
     }
 
-    /* Ajustes para el carrusel en móviles */
     .carousel .caption {
         padding: 10px;
     }
@@ -71,7 +330,6 @@
         font-size: 1em;
     }
 
-    /* Ajustes para la sección de productos destacados en móviles */
     .productos-destacados h2 {
         font-size: 1.5em;
     }
@@ -79,6 +337,14 @@
     .producto h3 {
         font-size: 1.2em;
     }
+
+    .producto {
+        min-width: 250px;
+    }
+
+    header {
+        flex-direction: column;
+    }
 }
 
-/* Resto de tus estilos existentes... */
+Aquí tienes el css, ahora te brindaré el js 
