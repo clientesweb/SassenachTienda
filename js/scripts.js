@@ -1,50 +1,97 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navbar = document.querySelector('.navbar');
-    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
-    menuToggle.addEventListener('click', function() {
-        navbar.classList.toggle('active');
-        this.classList.toggle('active');
-
-        if (this.classList.contains('active')) {
-            this.setAttribute('aria-expanded', 'true');
-        } else {
-            this.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Cerrar el menú al hacer clic en un enlace (para móviles)
-    const navLinks = document.querySelectorAll('.navbar a, .bottom-nav-item');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navbar.classList.remove('active');
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active'); // Oculta todas las imágenes
+            if (i === index) {
+                slide.classList.add('active'); // Muestra la imagen actual
             }
         });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides; // Incrementa el índice
+        showSlide(currentIndex); // Muestra la nueva imagen
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Decrementa el índice
+        showSlide(currentIndex); // Muestra la nueva imagen
+    }
+
+    // Event listeners para los botones
+    document.querySelector('.next').addEventListener('click', nextSlide);
+    document.querySelector('.prev').addEventListener('click', prevSlide);
+
+    // Cambiar imagen automáticamente cada 5 segundos
+    setInterval(nextSlide, 5000);
+});
+    // Slider de Productos
+    const productSlider = document.querySelector('.productos-slider');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    productSlider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - productSlider.offsetLeft;
+        scrollLeft = productSlider.scrollLeft;
     });
 
-    // Actualizar el ítem activo en el menú inferior
+    productSlider.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    productSlider.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    productSlider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - productSlider.offsetLeft;
+        const walk = (x - startX) * 2;
+        productSlider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Scroll suave para dispositivos táctiles
+    productSlider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX - productSlider.offsetLeft;
+        scrollLeft = productSlider.scrollLeft;
+    });
+
+    productSlider.addEventListener('touchmove', (e) => {
+        if (!startX) return;
+        const x = e.touches[0].pageX - productSlider.offsetLeft;
+        const walk = (x - startX) * 2;
+        productSlider.scrollLeft = scrollLeft - walk;
+    });
+
+    // ... (código posterior sin cambios) ...
+});
+
+    // Menú inferior
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+
     bottomNavItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             bottomNavItems.forEach(navItem => navItem.classList.remove('active'));
             item.classList.add('active');
+            
+            // Desplazamiento suave a la sección correspondiente
+            const targetId = item.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
-    // Manejar cambios de tamaño de ventana
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            navbar.classList.remove('active');
-            menuToggle.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Manejar el desplazamiento para resaltar el ítem activo en el menú inferior
+    // Actualizar ítem activo del menú inferior al hacer scroll
     window.addEventListener('scroll', () => {
         const scrollPosition = window.scrollY;
         const sections = document.querySelectorAll('section');
@@ -62,8 +109,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Aquí puedes agregar el código existente para el carrusel y el slider de productos
 });
-
-// Resto de tu código JavaScript existente...
