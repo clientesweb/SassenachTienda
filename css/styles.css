@@ -1,0 +1,146 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos generales */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 1.8rem;
+    color: #edf6f9;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #8ecae6;
+}
+
+/* Banner Principal */
+.banner {
+    background: url('../img/banner.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.banner .btn-banner {
+    padding: 10px 20px;
+    background-color: #8ecae6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.banner .btn-banner:hover {
+    background-color: #023047;
+}
+
+/* Productos Destacados */
+.productos-destacados {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.productos-destacados h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #2d6a4f;
+}
+
+.productos-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.producto {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.producto h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ff8c42;
+}
+
+.producto .btn-comprar {
+    background-color: #ff8c42;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.producto .btn-comprar:hover {
+    background-color: #ea580c;
+}
+
+.producto:hover {
+    transform: translateY(-10px);
+}
+
+/* Footer */
+footer {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
