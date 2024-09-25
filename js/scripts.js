@@ -41,11 +41,9 @@ nextProdBtn.addEventListener('click', () => {
 prevProdBtn.addEventListener('click', () => {
     productosSlider.scrollBy({ left: -300, behavior: 'smooth' });
 });
-// Menú hamburguesa
-const mobileMenu = document.querySelector('#mobile-menu');
-const navbarMenu = document.querySelector('.navbar ul');
+const menuToggle = document.getElementById('mobile-menu');
+const navbar = document.querySelector('.navbar');
 
-mobileMenu.addEventListener('click', () => {
-    navbarMenu.classList.toggle('active');
-    mobileMenu.classList.toggle('is-active');
+menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
 });
