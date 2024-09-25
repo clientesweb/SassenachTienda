@@ -13,7 +13,7 @@ body {
 /* Barra de Navegación Superior */
 header {
     display: flex;
-    justify-content: center; /* Centrar el logo */
+    justify-content: space-between; /* Espacio entre el logo y la barra de navegación */
     align-items: center;
     padding: 10px 20px;
     background-color: #2d6a4f;
@@ -22,13 +22,12 @@ header {
 }
 
 .logo {
-    flex: 1; /* Permitir que el logo ocupe espacio */
     display: flex;
     justify-content: center; /* Centrar el logo horizontalmente */
 }
 
 .navbar {
-    flex: 1; /* Permitir que la barra de navegación ocupe espacio */
+    display: flex; /* Mantener la barra de navegación visible */
 }
 
 .navbar ul {
@@ -56,9 +55,14 @@ header {
     height: auto;
 }
 
+/* Estilos para la barra de navegación inferior */
+.navbar-bottom {
+    display: none; /* Ocultar por defecto */
+}
+
 @media (max-width: 768px) {
-    header {
-        display: none; /* Ocultar el header en dispositivos móviles */
+    .navbar {
+        display: none; /* Ocultar la barra de navegación superior en móviles */
     }
 
     .navbar-bottom {
