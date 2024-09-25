@@ -570,3 +570,18 @@ footer {
         flex-direction: column;
     }
 }
+.whatsapp-button {
+    position: fixed; /* Fija la posición del botón */
+    bottom: 20px; /* Distancia desde el fondo de la ventana */
+    right: 20px; /* Distancia desde el lado derecho de la ventana */
+    background-color: #25D366; /* Color de fondo de WhatsApp */
+    border-radius: 50%; /* Bordes redondeados */
+    padding: 10px; /* Espacio interno */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+}
+
+.whatsapp-button img {
+    width: 50px; /* Tamaño del ícono */
+    height: 50px; /* Tamaño del ícono */
+}
