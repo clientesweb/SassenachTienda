@@ -138,12 +138,18 @@ header {
     padding: 50px 20px;
 }
 
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .productos-slider {
     display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow: hidden;
     gap: 20px;
-    padding: 10px;
+    scroll-behavior: smooth;
+    width: 100%;
 }
 
 .producto {
@@ -161,34 +167,37 @@ header {
     margin-bottom: 15px;
 }
 
-.producto h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.producto p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #ff8c42;
-}
-
-.producto .btn-comprar {
-    background-color: #ff8c42;
+.slider-btn {
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 10px 15px;
     border: none;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-.producto .btn-comprar:hover {
-    background-color: #ea580c;
+.prev-prod {
+    left: 10px;
 }
 
-.producto:hover {
-    transform: translateY(-10px);
+.next-prod {
+    right: 10px;
 }
 
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .producto {
+        min-width: 250px;
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+    }
+}
 /* Footer */
 footer {
     background-color: #2d6a4f;
