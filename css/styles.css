@@ -10,21 +10,13 @@ body {
     background-color: #f4f4f9;
     color: #333;
 }
-
-/* Barra de Navegación */
+/* Barra de Navegación Responsiva */
 header {
-    background-color: #2d6a4f;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-header .logo img {
-    width: 150px;
+    background-color: #2d6a4f;
 }
 
 .navbar ul {
@@ -44,6 +36,48 @@ header .logo img {
 .navbar ul li a:hover {
     background-color: #40916c;
     border-radius: 5px;
+}
+header .logo img {
+    width: 150px;
+}
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #2d6a4f;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
 }
 
 /* Carrusel del Banner Principal */
@@ -106,12 +140,18 @@ header .logo img {
     padding: 50px 20px;
 }
 
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .productos-slider {
     display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow: hidden;
     gap: 20px;
-    padding: 10px;
+    scroll-behavior: smooth;
+    width: 100%;
 }
 
 .producto {
@@ -129,34 +169,37 @@ header .logo img {
     margin-bottom: 15px;
 }
 
-.producto h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.producto p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #ff8c42;
-}
-
-.producto .btn-comprar {
-    background-color: #ff8c42;
+.slider-btn {
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 10px 15px;
     border: none;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-.producto .btn-comprar:hover {
-    background-color: #ea580c;
+.prev-prod {
+    left: 10px;
 }
 
-.producto:hover {
-    transform: translateY(-10px);
+.next-prod {
+    right: 10px;
 }
 
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .producto {
+        min-width: 250px;
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+    }
+}
 /* Footer */
 footer {
     background-color: #2d6a4f;
