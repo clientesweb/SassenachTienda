@@ -51,7 +51,7 @@ header {
 
 /* Ajustes del logo */
 .logo img {
-    max-width: 120px; /* Ajustamos el tamaño del logo */
+    max-width: 80px; /* Ajustamos el tamaño del logo */
     height: auto;
 }
 /* Estilos para el menú inferior */
