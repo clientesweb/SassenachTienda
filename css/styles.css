@@ -157,6 +157,25 @@ header {
 .carousel-btn.next {
     right: 10px;
 }
+.caption {
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el fondo */
+    left: 20px; /* Ajusta la distancia desde la izquierda */
+    color: white; /* Color del texto */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar la legibilidad */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.caption h2 {
+    margin: 0; /* Sin margen para el título */
+    font-size: 24px; /* Ajusta el tamaño del texto del título */
+}
+
+.caption p {
+    margin: 5px 0 0; /* Ajusta el margen del párrafo */
+    font-size: 16px; /* Ajusta el tamaño del texto del párrafo */
+}
 /* Slider de Productos */
 .productos-destacados {
     text-align: center;
