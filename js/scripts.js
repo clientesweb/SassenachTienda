@@ -1,35 +1,31 @@
-let currentIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
+document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
-// Función para mostrar la imagen actual
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active'); // Oculta todas las imágenes
-        if (i === index) {
-            slide.classList.add('active'); // Muestra la imagen actual
-        }
-    });
-}
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
 
-// Función para cambiar a la siguiente imagen
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides; // Incrementa el índice
-    showSlide(currentIndex); // Muestra la nueva imagen
-}
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
 
-// Función para cambiar a la imagen anterior
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Decrementa el índice
-    showSlide(currentIndex); // Muestra la nueva imagen
-}
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+    }
 
-// Event listeners para los botones
-document.querySelector('.next').addEventListener('click', nextSlide);
-document.querySelector('.prev').addEventListener('click', prevSlide);
-
-// Cambiar imagen automáticamente cada 5 segundos
-setInterval(nextSlide, 5000);
+    document.querySelector('.next').addEventListener('click', nextSlide);
+    document.querySelector('.prev').addEventListener('click', prevSlide);
+    setInterval(nextSlide, 5000);
+});
 
     // Slider de Productos
     const productSlider = document.querySelector('.productos-slider');
