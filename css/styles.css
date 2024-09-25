@@ -10,10 +10,11 @@ body {
     background-color: #f4f4f9;
     color: #333;
 }
+
 /* Barra de Navegación Superior */
 header {
     display: flex;
-    justify-content: space-between; /* Espacio entre el logo y la barra de navegación */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #2d6a4f;
@@ -23,11 +24,11 @@ header {
 
 .logo {
     display: flex;
-    justify-content: center; /* Centrar el logo horizontalmente */
+    justify-content: center;
 }
 
 .navbar {
-    display: flex; /* Mantener la barra de navegación visible */
+    display: flex;
 }
 
 .navbar ul {
@@ -51,9 +52,10 @@ header {
 
 /* Ajustes del logo */
 .logo img {
-    max-width: 100px; /* Ajustamos el tamaño del logo */
+    max-width: 100px;
     height: auto;
 }
+
 /* Estilos para el menú inferior */
 .bottom-nav {
     display: none;
@@ -84,93 +86,14 @@ header {
 }
 
 .bottom-nav-item.active {
-    color: #4CAF50; /* Color primario de Sassenach, ajusta según tu paleta de colores */
-}
-/* Estilos para el menú inferior */
-.bottom-nav {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 1000;
+    color: #4CAF50;
 }
 
-.bottom-nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #333333;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-.bottom-nav-item i {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.bottom-nav-item.active {
-    color: #4CAF50; /* Color primario de Sassenach, ajusta según tu paleta de colores */
-}
-
-/* Media queries para responsividad */
-@media (max-width: 768px) {
-    .navbar {
-        display: none; /* Oculta completamente la barra de navegación superior en móviles */
-    }
-
-    .bottom-nav {
-        display: flex; /* Muestra el menú inferior en móviles */
-    }
-
-    /* Ajusta el padding del contenido principal para dar espacio al menú inferior */
-    body {
-        padding-bottom: 60px;
-    }
-
-    /* Ajustes adicionales para mejorar la visualización en móviles */
-    .logo {
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .logo img {
-        max-width: 80px; /* Ajusta según sea necesario */
-    }
-
-    /* Ajustes para el carrusel en móviles */
-    .carousel .caption {
-        padding: 10px;
-    }
-
-    .carousel .caption h2 {
-        font-size: 1.5em;
-    }
-
-    .carousel .caption p {
-        font-size: 1em;
-    }
-
-    /* Ajustes para la sección de productos destacados en móviles */
-    .productos-destacados h2 {
-        font-size: 1.5em;
-    }
-
-    .producto h3 {
-        font-size: 1.2em;
-    }
-}
 /* Estilo del carrusel */
 .carousel {
     position: relative;
     width: 100%;
-    height: 60vh; /* Puedes ajustar esta altura según lo necesites */
+    height: 60vh;
     overflow: hidden;
 }
 
@@ -187,19 +110,19 @@ header {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Transición suave entre imágenes */
+    transition: opacity 0.5s ease-in-out;
     z-index: 0;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Las imágenes se adaptan al contenedor */
+    object-fit: cover;
 }
 
 .slide.active {
     opacity: 1;
-    z-index: 1; /* La imagen activa estará en el frente */
+    z-index: 1;
 }
 
 /* Botones de navegación del carrusel */
@@ -222,25 +145,27 @@ header {
 .carousel-btn.next {
     right: 10px;
 }
+
 .caption {
     position: absolute;
-    bottom: 20px; /* Ajusta la distancia desde el fondo */
-    left: 20px; /* Ajusta la distancia desde la izquierda */
-    color: white; /* Color del texto */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar la legibilidad */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .caption h2 {
-    margin: 0; /* Sin margen para el título */
-    font-size: 24px; /* Ajusta el tamaño del texto del título */
+    margin: 0;
+    font-size: 24px;
 }
 
 .caption p {
-    margin: 5px 0 0; /* Ajusta el margen del párrafo */
-    font-size: 16px; /* Ajusta el tamaño del texto del párrafo */
+    margin: 5px 0 0;
+    font-size: 16px;
 }
+
 /* Slider de Productos */
 .productos-destacados {
     text-align: center;
@@ -251,14 +176,13 @@ header {
     position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .productos-slider {
     display: flex;
-    overflow: hidden;
     gap: 20px;
-    scroll-behavior: smooth;
-    width: 100%;
+    transition: transform 0.3s ease;
 }
 
 .producto {
@@ -296,17 +220,6 @@ header {
     right: 10px;
 }
 
-/* Estilos Responsivos */
-@media (max-width: 768px) {
-    .producto {
-        min-width: 250px;
-    }
-
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-    }
-}
 /* Footer */
 footer {
     background-color: #2d6a4f;
@@ -315,15 +228,54 @@ footer {
     text-align: center;
 }
 
-/* Estilos Responsivos */
+/* Media queries para responsividad */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
+    .navbar {
+        display: none;
     }
-    .productos-slider {
-        flex-wrap: nowrap;
+
+    .bottom-nav {
+        display: flex;
     }
+
+    body {
+        padding-bottom: 60px;
+    }
+
+    .logo {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .logo img {
+        max-width: 80px;
+    }
+
+    .carousel .caption {
+        padding: 10px;
+    }
+
+    .carousel .caption h2 {
+        font-size: 1.5em;
+    }
+
+    .carousel .caption p {
+        font-size: 1em;
+    }
+
+    .productos-destacados h2 {
+        font-size: 1.5em;
+    }
+
+    .producto h3 {
+        font-size: 1.2em;
+    }
+
     .producto {
         min-width: 250px;
+    }
+
+    header {
+        flex-direction: column;
     }
 }
