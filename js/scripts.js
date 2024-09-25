@@ -29,3 +29,11 @@ botonesComprar.forEach(boton => {
         // Aquí puedes añadir más lógica para gestionar el carrito.
     });
 });
+// Menú hamburguesa
+const mobileMenu = document.querySelector('#mobile-menu');
+const navbarMenu = document.querySelector('.navbar ul');
+
+mobileMenu.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+    mobileMenu.classList.toggle('is-active');
+});
