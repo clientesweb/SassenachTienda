@@ -122,6 +122,7 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex: 0 1 300px; /* Flexibilidad en el tamaño */
     transition: transform 0.3s ease; /* Transición suave para el hover */
+    text-align: center; /* Centra el texto y los elementos dentro del curso */
 }
 
 .curso-taller:hover {
@@ -137,6 +138,14 @@ header {
 .curso-taller p {
     color: #4e4e4e; /* Color del texto */
     margin-bottom: 20px;
+}
+
+/* Estilos para las imágenes */
+.curso-imagen {
+    width: 100%; /* Hace que la imagen ocupe el ancho completo del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+    margin-bottom: 15px; /* Espacio debajo de la imagen */
 }
 
 .btn-inscribirse {
