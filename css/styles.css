@@ -6,92 +6,112 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Estilos generales */
 body {
     background-color: #f4f4f9;
     color: #333;
 }
 
+/* Barra de Navegación */
 header {
     background-color: #2d6a4f;
-    color: white;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-header .logo h1 {
-    font-size: 1.8rem;
-    color: #edf6f9;
+header .logo img {
+    width: 150px;
 }
 
-header nav ul {
+.navbar ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
-header nav ul li a {
+.navbar ul li a {
+    color: white;
     text-decoration: none;
-    color: white;
     font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-header nav ul li a:hover {
-    color: #8ecae6;
-}
-
-/* Banner Principal */
-.banner {
-    background: url('../img/banner.jpg') no-repeat center center/cover;
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.banner h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.banner p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.banner .btn-banner {
-    padding: 10px 20px;
-    background-color: #8ecae6;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
+    padding: 10px 15px;
     transition: background-color 0.3s ease;
 }
 
-.banner .btn-banner:hover {
-    background-color: #023047;
+.navbar ul li a:hover {
+    background-color: #40916c;
+    border-radius: 5px;
 }
 
-/* Productos Destacados */
-.productos-destacados {
-    padding: 50px 20px;
-    text-align: center;
+/* Carrusel del Banner Principal */
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
 }
 
-.productos-destacados h2 {
-    margin-bottom: 40px;
-    font-size: 2rem;
-    color: #2d6a4f;
-}
-
-.productos-container {
+.slides {
     display: flex;
+    transition: transform 0.5s ease;
+    width: 300%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Slider de Productos */
+.productos-destacados {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.productos-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
     gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    padding: 10px;
 }
 
 .producto {
@@ -99,7 +119,7 @@ header nav ul li a:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    min-width: 300px;
     transition: transform 0.3s ease;
 }
 
@@ -143,4 +163,17 @@ footer {
     color: white;
     padding: 20px;
     text-align: center;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+    .productos-slider {
+        flex-wrap: nowrap;
+    }
+    .producto {
+        min-width: 250px;
+    }
 }
