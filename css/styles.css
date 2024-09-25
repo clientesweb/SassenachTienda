@@ -17,6 +17,8 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: #2d6a4f;
+    position: relative;
+    z-index: 1000;
 }
 
 .navbar ul {
@@ -37,6 +39,7 @@ header {
     background-color: #40916c;
     border-radius: 5px;
 }
+
 /* Ajustes del logo */
 .logo img {
     max-width: 120px; /* Ajustamos el tamaño del logo */
@@ -44,61 +47,30 @@ header {
     margin-right: 20px; /* Espacio entre el logo y la barra de navegación */
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #2d6a4f;
-    position: relative;
-    z-index: 1000;
-}
-
 @media (max-width: 768px) {
+    /* Para pantallas más pequeñas, se redimensiona el logo */
     .logo img {
         max-width: 100px; /* Redimensionamos el logo para pantallas más pequeñas */
     }
-}
-/* Menú hamburguesa */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-}
 
-.menu-toggle .bar {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    transition: 0.3s ease;
-}
+    /* Estilos para la barra de navegación en dispositivos móviles */
+    header {
+        flex-direction: column; /* Cambia la dirección del flex para que sea vertical */
+        align-items: flex-end; /* Alinea el contenido a la derecha */
+    }
 
-@media (max-width: 768px) {
+    .navbar {
+        width: 100%; /* Ancho completo */
+        position: fixed; /* Fija la barra de navegación */
+        bottom: 0; /* Posición en la parte inferior */
+        background-color: #2d6a4f; /* Color de fondo */
+    }
+
     .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #2d6a4f;
-        width: 100%;
-        text-align: center;
-        padding: 20px 0;
-    }
-
-    .navbar ul.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex;
+        justify-content: space-around; /* Espacio uniforme entre los elementos */
+        width: 100%; /* Ancho completo para la lista */
     }
 }
-
 /* Estilo del carrusel */
 .carousel {
     position: relative;
