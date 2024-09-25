@@ -11,13 +11,20 @@ body {
     color: #333;
 }
 
-/* Barra de Navegación Responsiva */
+/* Barra de Navegación */
 header {
+    background-color: #2d6a4f;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #2d6a4f;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    width: 150px;
 }
 
 .navbar ul {
@@ -39,82 +46,40 @@ header {
     border-radius: 5px;
 }
 
-/* Menú hamburguesa */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-}
-
-.menu-toggle .bar {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    transition: 0.3s ease;
-}
-
-@media (max-width: 768px) {
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #2d6a4f;
-        width: 100%;
-        text-align: center;
-        padding: 20px 0;
-    }
-
-    .navbar ul.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-}
-/* Estilo del carrusel */
+/* Carrusel del Banner Principal */
 .carousel {
     position: relative;
     width: 100%;
-    height: 60vh; /* Puedes ajustar esta altura según lo necesites */
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 300%;
 }
 
 .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Transición suave entre imágenes */
-    z-index: 0;
+    min-width: 100%;
+    height: 500px;
+    position: relative;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Las imágenes se adaptan al contenedor */
+    object-fit: cover;
 }
 
-.slide.active {
-    opacity: 1;
-    z-index: 1; /* La imagen activa estará en el frente */
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Botones de navegación del carrusel */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -124,53 +89,29 @@ header {
     border: none;
     padding: 10px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 10;
 }
 
-.carousel-btn.prev {
+.prev {
     left: 10px;
 }
 
-.carousel-btn.next {
+.next {
     right: 10px;
 }
-.caption {
-    position: absolute;
-    bottom: 20px; /* Ajusta la distancia desde el fondo */
-    left: 20px; /* Ajusta la distancia desde la izquierda */
-    color: white; /* Color del texto */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar la legibilidad */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-}
 
-.caption h2 {
-    margin: 0; /* Sin margen para el título */
-    font-size: 24px; /* Ajusta el tamaño del texto del título */
-}
-
-.caption p {
-    margin: 5px 0 0; /* Ajusta el margen del párrafo */
-    font-size: 16px; /* Ajusta el tamaño del texto del párrafo */
-}
 /* Slider de Productos */
 .productos-destacados {
     text-align: center;
     padding: 50px 20px;
 }
 
-.slider-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
 .productos-slider {
     display: flex;
-    overflow: hidden;
-    gap: 20px;
+    overflow-x: auto;
     scroll-behavior: smooth;
-    width: 100%;
+    gap: 20px;
+    padding: 10px;
 }
 
 .producto {
@@ -188,37 +129,34 @@ header {
     margin-bottom: 15px;
 }
 
-.slider-btn {
-    background-color: rgba(0, 0, 0, 0.5);
+.producto h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ff8c42;
+}
+
+.producto .btn-comprar {
+    background-color: #ff8c42;
     color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px;
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
+    transition: background-color 0.3s ease;
 }
 
-.prev-prod {
-    left: 10px;
+.producto .btn-comprar:hover {
+    background-color: #ea580c;
 }
 
-.next-prod {
-    right: 10px;
+.producto:hover {
+    transform: translateY(-10px);
 }
 
-/* Estilos Responsivos */
-@media (max-width: 768px) {
-    .producto {
-        min-width: 250px;
-    }
-
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-    }
-}
 /* Footer */
 footer {
     background-color: #2d6a4f;
