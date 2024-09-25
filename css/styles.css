@@ -10,21 +10,24 @@ body {
     background-color: #f4f4f9;
     color: #333;
 }
-
-/* Barra de Navegación */
+/* Barra de Navegación Superior */
 header {
-    background-color: #2d6a4f;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Espacio entre el logo y la barra de navegación */
     align-items: center;
     padding: 10px 20px;
-    position: sticky;
-    top: 0;
+    background-color: #2d6a4f;
+    position: relative;
     z-index: 1000;
 }
 
-header .logo img {
-    width: 150px;
+.logo {
+    display: flex;
+    justify-content: center; /* Centrar el logo horizontalmente */
+}
+
+.navbar {
+    display: flex; /* Mantener la barra de navegación visible */
 }
 
 .navbar ul {
@@ -44,6 +47,44 @@ header .logo img {
 .navbar ul li a:hover {
     background-color: #40916c;
     border-radius: 5px;
+}
+
+/* Ajustes del logo */
+.logo img {
+    max-width: 100px; /* Ajustamos el tamaño del logo */
+    height: auto;
+}
+/* Estilos para el menú inferior */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333333;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.bottom-nav-item i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.bottom-nav-item.active {
+    color: #4CAF50; /* Color primario de Sassenach, ajusta según tu paleta de colores */
 }
 /* Estilos para el menú inferior */
 .bottom-nav {
@@ -78,65 +119,53 @@ header .logo img {
     color: #4CAF50; /* Color primario de Sassenach, ajusta según tu paleta de colores */
 }
 
-/* Estilos para el botón de menú en móviles */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #333333;
-    margin: 5px 0;
-    transition: 0.4s;
-}
-
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .navbar {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
-        padding: 20px 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar.active {
-        display: flex;
-    }
-
-    .navbar ul {
-        flex-direction: column;
-    }
-
-    .navbar li {
-        margin: 10px 0;
-    }
-
-    .menu-toggle {
-        display: block;
+        display: none; /* Oculta completamente la barra de navegación superior en móviles */
     }
 
     .bottom-nav {
-        display: flex;
+        display: flex; /* Muestra el menú inferior en móviles */
     }
 
     /* Ajusta el padding del contenido principal para dar espacio al menú inferior */
     body {
         padding-bottom: 60px;
     }
+
+    /* Ajustes adicionales para mejorar la visualización en móviles */
+    .logo {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .logo img {
+        max-width: 80px; /* Ajusta según sea necesario */
+    }
+
+    /* Ajustes para el carrusel en móviles */
+    .carousel .caption {
+        padding: 10px;
+    }
+
+    .carousel .caption h2 {
+        font-size: 1.5em;
+    }
+
+    .carousel .caption p {
+        font-size: 1em;
+    }
+
+    /* Ajustes para la sección de productos destacados en móviles */
+    .productos-destacados h2 {
+        font-size: 1.5em;
+    }
+
+    .producto h3 {
+        font-size: 1.2em;
+    }
 }
-
-/* Resto de tus estilos existentes... */
-
 /* Estilo del carrusel */
 .carousel {
     position: relative;
@@ -212,19 +241,24 @@ header .logo img {
     margin: 5px 0 0; /* Ajusta el margen del párrafo */
     font-size: 16px; /* Ajusta el tamaño del texto del párrafo */
 }
-
 /* Slider de Productos */
 .productos-destacados {
     text-align: center;
     padding: 50px 20px;
 }
 
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .productos-slider {
     display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow: hidden;
     gap: 20px;
-    padding: 10px;
+    scroll-behavior: smooth;
+    width: 100%;
 }
 
 .producto {
@@ -242,34 +276,37 @@ header .logo img {
     margin-bottom: 15px;
 }
 
-.producto h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.producto p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #ff8c42;
-}
-
-.producto .btn-comprar {
-    background-color: #ff8c42;
+.slider-btn {
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 10px 15px;
     border: none;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-.producto .btn-comprar:hover {
-    background-color: #ea580c;
+.prev-prod {
+    left: 10px;
 }
 
-.producto:hover {
-    transform: translateY(-10px);
+.next-prod {
+    right: 10px;
 }
 
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .producto {
+        min-width: 250px;
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+    }
+}
 /* Footer */
 footer {
     background-color: #2d6a4f;
