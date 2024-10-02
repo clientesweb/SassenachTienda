@@ -65,7 +65,7 @@ function handleProductFilters() {
             const category = button.getAttribute('data-category');
             loadProductSlider(category);
             
-            filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-white'));
+            filterButtons.forEach(btn => btn.classList.remove('bg-[#EAE4D2]', 'text-white'));
             filterButtons.forEach(btn => btn.classList.add('bg-gray-200', 'text-gray-700'));
             button.classList.remove('bg-gray-200', 'text-gray-700');
             button.classList.add('bg-primary', 'text-white');
