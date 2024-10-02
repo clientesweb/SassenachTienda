@@ -3,268 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sassenach - Tienda Natural</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script defer src="js/scripts.js"></script>
+    <title>Mon Amour Textil - Tienda Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    secondary: '#10B981',
+                    accent: '#F59E0B',
+                    'jasmine-yellow': '#F6EB61', // Color amarillo jazmín
+                }
+            }
+        }
+    }
+</script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .animate-fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .product-slider {
+            scroll-behavior: smooth;
+        }
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+        .social-icon {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-icon:hover {
+            color: #3B82F6;
+            transform: translateY(-3px);
+        }
+        .whatsapp-button {
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
-<body>
-    <!-- Barra de Navegación -->
-    <header>
-        <div class="logo">
-            <img src="img/sassenach.png" alt="Logo Sassenach">
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#carrito">Carrito</a></li>
-            </ul>
+<body class="bg-gray-100">
+    <div id="top-banner" class="bg-jasmine-yellow text-black py-2 px-4 text-center text-sm slide-in">
+    <p>Envío gratis en compras superiores a $10000 | 3 cuotas sin interés</p>
+</div>
+    
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <img src="https://clientesweb.github.io/tienda/img/logo.jpg" alt="Mon Amour Textil Logo" class="h-20">
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-primary transition duration-300">Inicio</a>
+                    <a href="#products" class="text-gray-700 hover:text-primary transition duration-300">Productos</a>
+                    <a href="#featured" class="text-gray-700 hover:text-primary transition duration-300">Destacados</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary transition duration-300">Nosotros</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300">Contacto</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="cart-button" class="text-gray-700 hover:text-primary transition duration-300">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="bg-accent text-white rounded-full px-2 py-1 text-xs">0</span>
+                    </button>
+                    <button class="md:hidden" id="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden mt-4 hidden">
+                <a href="#" class="block py-2 text-gray-700 hover:text-primary transition duration-300">Inicio</a>
+                <a href="#products" class="block py-2 text-gray-700 hover:text-primary transition duration-300">Productos</a>
+                <a href="#featured" class="block py-2 text-gray-700 hover:text-primary transition duration-300">Destacados</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-primary transition duration-300">Nosotros</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-primary transition duration-300">Contacto</a>
+            </div>
         </nav>
     </header>
 
-    <!-- Barra de Navegación Inferior -->
-    <nav class="bottom-nav">
-        <a href="#inicio" class="bottom-nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Inicio</span>
-        </a>
-        <a href="#productos" class="bottom-nav-item">
-            <i class="fas fa-leaf"></i>
-            <span>Productos</span>
-        </a>
-        <a href="#nosotros" class="bottom-nav-item">
-            <i class="fas fa-users"></i>
-            <span>Nosotros</span>
-        </a>
-        <a href="#contacto" class="bottom-nav-item">
-            <i class="fas fa-envelope"></i>
-            <span>Contacto</span>
-        </a>
-        <a href="#carrito" class="bottom-nav-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Carrito</span>
-        </a>
-    </nav>
+    <main>
+        <section id="hero" class="bg-gray-200 py-10 md:py-20">
+            <div class="container mx-auto px-4">
+                <div id="hero-carousel" class="relative overflow-hidden h-48 md:h-96 rounded-lg shadow-lg">
+                    <div class="carousel-item active">
+                        <img src="https://www.tiendachamme.com.ar/wp-content/uploads/2023/05/banner-1.jpg" alt="Hero 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.tiendachamme.com.ar/wp-content/uploads/2023/05/banner-2.jpg" alt="Hero 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.tiendachamme.com.ar/wp-content/uploads/2023/05/banner-3.jpg" alt="Hero 3" class="w-full h-full object-cover">
+                    </div>
+                    <button id="prev-slide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 transition duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-slide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 transition duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-    <!-- Carrusel del Banner Principal -->
-    <section id="inicio" class="carousel">
-        <div class="slides">
-            <div class="slide">
-                <img src="img/baner0.jpg" alt="Banner 1">
-                <div class="caption">
-                    <h2>Bienvenido a Sassenach</h2>
-                    <p>Descubre el poder de las plantas medicinales</p>
+        <section id="featured" class="py-10 md:py-16 animate-on-scroll">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Productos Destacados</h2>
+                <div class="relative">
+                    <div class="featured-slider overflow-x-auto flex space-x-4 pb-4" id="featured-slider">
+                        <!-- Los productos destacados se cargarán dinámicamente aquí -->
+                    </div>
+                    <button id="prev-featured" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-featured" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
-            <div class="slide">
-                <img src="img/baner1.jpg" alt="Banner 2">
-                <div class="caption">
-                    <h2>Productos Orgánicos y Naturales</h2>
-                    <p>Cuidado personal basado en la naturaleza</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="img/baner2.jpg" alt="Banner 3">
-                <div class="caption">
-                    <h2>Tinturas y Macerados</h2>
-                    <p>Preparados artesanales y efectivos</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-btn prev">❮</button>
-        <button class="carousel-btn next">❯</button>
-    </section>
+        </section>
 
-    <!-- Sección Nosotros -->
-    <section id="nosotros" class="seccion-nosotros">
-        <h2>💚</h2>
-        <div class="nosotros-contenido">
-            <p>En Sassenach creemos en el poder de la naturaleza para ofrecer productos que mejoren tu bienestar. Nos especializamos en productos naturales y orgánicos, elaborados de manera artesanal y con ingredientes de alta calidad. Conocé más mi historia ⬇️</p>
-            <div class="nosotros-video">
-                <video controls>
-                    <source src="video/nosotros.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de video.
-                </video>
+        <section id="products" class="py-10 md:py-16 animate-on-scroll">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Nuestros Productos</h2>
+                <div class="mb-6 md:mb-8 flex flex-wrap justify-center gap-2 md:gap-4" id="category-filters">
+                    <button class="bg-primary text-white px-3 py-1 md:px-4 md:py-2 rounded-full hover:bg-blue-600 transition duration-300 text-sm md:text-base" data-category="all">Todos</button>
+                    <button class="bg-gray-200 text-gray-700 px-3 py-1 md:px-4 md:py-2 rounded-full hover:bg-gray-300 transition duration-300 text-sm md:text-base" data-category="category1">Categoría 1</button>
+                    <button class="bg-gray-200 text-gray-700 px-3 py-1 md:px-4 md:py-2 rounded-full hover:bg-gray-300 transition duration-300 text-sm md:text-base" data-category="category2">Categoría 2</button>
+                    <button class="bg-gray-200 text-gray-700 px-3 py-1 md:px-4 md:py-2 rounded-full hover:bg-gray-300 transition duration-300 text-sm md:text-base" data-category="category3">Categoría 3</button>
+                </div>
+                <div class="relative">
+                    <div class="product-slider overflow-x-auto flex space-x-4 pb-4" id="product-slider">
+                        <!-- Los productos se cargarán dinámicamente aquí -->
+                    </div>
+                    <button id="prev-product" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-product" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Slider de Productos Destacados -->
-    <section id="productos" class="productos-destacados">
-        <h2>Productos Destacados</h2>
-        <div class="slider-container">
-            <div class="productos-slider">
-                <div class="producto">
-                    <img src="img/tintura1.jpg" alt="Tintura Madre">
-                    <h3>Tintura Madre de Plantas Medicinales 30 ml</h3>
-                    <p>$8.200</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/macerado.jpg" alt="Macerado">
-                    <h3>Tintura Madre de Plantas Medicinales 10 ml</h3>
-                    <p>$4.000</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <!-- Agrega más productos aquí -->
-                <div class="producto">
-                    <img src="img/aceite1.jpg" alt="Aceite Esencial">
-                    <h3>Aceite Esencial de Lavanda</h3>
-                    <p>$950</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/crema1.jpg" alt="Crema Natural">
-                    <h3>Crema Hidratante Natural</h3>
-                    <p>$780</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/jabon1.jpg" alt="Jabón Artesanal">
-                    <h3>Jabón Artesanal de Caléndula</h3>
-                    <p>$350</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
+        <section id="banner" class="bg-secondary text-white py-10 md:py-16 animate-on-scroll">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">¡Ofertas Especiales!</h2>
+                <p class="text-lg mb-6">No te pierdas nuestras increíbles ofertas por tiempo limitado.</p>
+                <a href="#" class="bg-white text-secondary px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">Ver Ofertas</a>
             </div>
-        </div>
-    </section>
-<!-- Slider de Productos Destacados -->
-    <section id="productos" class="productos-destacados">
-        <h2>Productos Destacados</h2>
-        <div class="slider-container">
-            <div class="productos-slider">
-                <div class="producto">
-                    <img src="img/tintura1.jpg" alt="Tintura Madre">
-                    <h3>Tintura Madre de Plantas Medicinales 30 ml</h3>
-                    <p>$8.200</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/macerado.jpg" alt="Macerado">
-                    <h3>Tintura Madre de Plantas Medicinales 10 ml</h3>
-                    <p>$4.000</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <!-- Agrega más productos aquí -->
-                <div class="producto">
-                    <img src="img/aceite1.jpg" alt="Aceite Esencial">
-                    <h3>Aceite Esencial de Lavanda</h3>
-                    <p>$950</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/crema1.jpg" alt="Crema Natural">
-                    <h3>Crema Hidratante Natural</h3>
-                    <p>$780</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/jabon1.jpg" alt="Jabón Artesanal">
-                    <h3>Jabón Artesanal de Caléndula</h3>
-                    <p>$350</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- Slider de Productos Destacados -->
-    <section id="productos" class="productos-destacados">
-        <h2>Productos Destacados</h2>
-        <div class="slider-container">
-            <div class="productos-slider">
-                <div class="producto">
-                    <img src="img/tintura1.jpg" alt="Tintura Madre">
-                    <h3>Tintura Madre de Plantas Medicinales 30 ml</h3>
-                    <p>$8.200</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/macerado.jpg" alt="Macerado">
-                    <h3>Tintura Madre de Plantas Medicinales 10 ml</h3>
-                    <p>$4.000</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <!-- Agrega más productos aquí -->
-                <div class="producto">
-                    <img src="img/aceite1.jpg" alt="Aceite Esencial">
-                    <h3>Aceite Esencial de Lavanda</h3>
-                    <p>$950</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/crema1.jpg" alt="Crema Natural">
-                    <h3>Crema Hidratante Natural</h3>
-                    <p>$780</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="img/jabon1.jpg" alt="Jabón Artesanal">
-                    <h3>Jabón Artesanal de Caléndula</h3>
-                    <p>$350</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-<!-- Sección de Cursos y Talleres -->
-<section class="cursos-talleres">
-    <h2>Cursos y Talleres</h2>
-    <div class="cursos-talleres-container">
-        <div class="curso-taller">
-            <img src="ruta/a/tu-imagen-naturaleza.jpg" alt="Curso de Naturaleza" class="curso-imagen">
-            <h3>Curso de Naturaleza</h3>
-            <p>Aprende sobre las plantas medicinales y su uso en la vida diaria.</p>
-            <button class="btn-inscribirse">Inscribirse</button>
-        </div>
-        <div class="curso-taller">
-            <img src="ruta/a/tu-imagen-cocina.jpg" alt="Cursos de Cocina" class="curso-imagen">
-            <h3>Cursos de Cocina</h3>
-            <p>Descubre el arte de la cocina con nuestros expertos en este curso práctico.</p>
-            <button class="btn-inscribirse">Inscribirse</button>
-        </div>
-    </div>
-</section>
+        <section id="about" class="bg-white py-10 md:py-16 animate-on-scroll">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Sobre Nosotros</h2>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <img src="https://via.placeholder.com/600x400" alt="Sobre Nosotros" class="rounded-lg shadow-lg">
+                    </div>
+                    <div class="md:w-1/2">
+                        <p class="text-base md:text-lg text-gray-700 mb-4">
+                            Tienda Mon Amour Textil es tu destino para productos únicos y de alta calidad. Nos enorgullece ofrecer una selección cuidadosamente curada para satisfacer tus necesidades y gustos.
+                        </p>
+                        <p class="text-base md:text-lg text-gray-700 mb-4">
+                            Con años de experiencia en el mercado, nos dedicamos a brindar la mejor experiencia de compra a nuestros clientes. Nuestro compromiso es ofrecerte productos excepcionales y un servicio al cliente inigualable.
+                        </p>
+                        <a href="#" class="inline-block bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition duration-300">Conoce Más</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-info">
-            <p>&copy; 2024 Sassenach - Tienda Natural. Todos los derechos reservados.</p>
-            <p>Powered by <a href="https://www.dualitydomain.com" target="_blank">Duality Domain</a></p>
+        <section id="contact" class="py-10 md:py-16 animate-on-scroll">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Contáctanos</h2>
+                <form class="max-w-lg mx-auto">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
+                        <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700 font-bold mb-2">Mensaje</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                    </div>
+                    <button type="submit" class="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition duration-300 w-full">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Sobre Nosotros</h3>
+                    <p class="text-sm">Tienda Mon Amour Textil es tu destino para productos únicos y de alta calidad.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+                    <ul class="text-sm">
+                        <li><a href="#" class="hover:text-gray-300 transition duration-300">Inicio</a></li>
+                        <li><a href="#products" class="hover:text-gray-300 transition duration-300">Productos</a></li>
+                        <li><a href="#featured" class="hover:text-gray-300 transition duration-300">Destacados</a></li>
+                        <li><a href="#about" class="hover:text-gray-300 transition duration-300">Nosotros</a></li>
+                        <li><a href="#contact" class="hover:text-gray-300 transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram text-2xl"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Métodos de Pago</h3>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-2xl"></i>
+                        <i class="fab fa-cc-mastercard text-2xl"></i>
+                        <i class="fab fa-cc-amex text-2xl"></i>
+                        <i class="fab fa-cc-paypal text-2xl"></i>
+                        <i class="fas fa-money-bill-wave text-2xl"></i> <!-- Icono para Mercado Pago -->
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>&copy; 2023 Mon Amour Textil. Todos los derechos reservados.</p>
+                <p class="mt-2">Powered by <a href="https://dualitydomain.github.io/Dualitydomain/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300">Duality Domain</a></p>
+            </div>
         </div>
-        <div class="footer-socials">
-            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
-    </div>
-    <div class="footer-map">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093757!2d144.95373531531616!3d-37.81720997975149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f5eeb61%3A0x5045675218ceed30!2sSassenach%20-%20Tienda%20Natural!5e0!3m2!1ses!2sar!4v1648774239017!5m2!1ses!2sar" 
-            width="100%" 
-            height="250" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
-    </div>
-</footer>
-<!-- Botón de WhatsApp -->
-    <a href="https://wa.me/5491123456789" class="whatsapp-button" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-3 shadow-lg whatsapp-button">
+        <i class="fab fa-whatsapp text-2xl"></i>
     </a>
+
+    <!-- Modal de carrito -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 md:p-8 rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">Carrito de Compras</h2>
+            <div id="cart-items" class="mb-4">
+                <!-- Los items del carrito se cargarán aquí -->
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-bold">Total:</span>
+                <span id="cart-total" class="font-bold"></span>
+            </div>
+            <button id="checkout-button" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 w-full mb-2">Finalizar Compra</button>
+            <button id="close-cart" class="text-gray-600 hover:text-gray-800 w-full text-center">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal de compra -->
+    <div id="purchase-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 md:p-8 rounded-lg max-w-md w-full">
+            <h2 class="text-2xl font-bold mb-4">Finalizar Compra</h2>
+            <form id="purchase-form">
+                <div class="mb-4">
+                    <label for="purchase-name" class="block text-gray-700 font-bold mb-2">Nombre completo</label>
+                    <input type="text" id="purchase-name" name="purchase-name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+                <div class="mb-4">
+                    <label for="purchase-email" class="block text-gray-700 font-bold mb-2">Email</label>
+                    <input type="email" id="purchase-email" name="purchase-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+                <div class="mb-4">
+                    <label for="purchase-address" class="block text-gray-700 font-bold mb-2">Dirección de envío</label>
+                    <textarea id="purchase-address" name="purchase-address" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                </div>
+                <div id="mercadopago-button-container">
+                    <!-- El botón de pago de Mercado Pago se insertará aquí -->
+                </div>
+                <button type="button" id="close-purchase" class="mt-4 text-gray-600 hover:text-gray-800 w-full text-center">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SDK MercadoPago.js -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
