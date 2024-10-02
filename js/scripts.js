@@ -1,13 +1,13 @@
 // Simulación de datos de productos
 const products = [
-    { id: 1, name: 'Producto 1', price: 19.99, image: 'https://clientesweb.github.io/SassenachTienda/img/Tintura Cannabis.png', category: 'category1' },
-    { id: 2, name: 'Producto 2', price: 29.99, image: 'https://via.placeholder.com/300x300', category: 'category2' },
-    { id: 3, name: 'Producto 3', price: 39.99, image: 'https://via.placeholder.com/300x300', category: 'category3' },
-    { id: 4, name: 'Producto 4', price: 24.99, image: 'https://via.placeholder.com/300x300', category: 'category1' },
-    { id: 5, name: 'Producto 5', price: 34.99, image: 'https://via.placeholder.com/300x300', category: 'category2' },
-    { id: 6, name: 'Producto 6', price: 44.99, image: 'https://via.placeholder.com/300x300', category: 'category3' },
-    { id: 7, name: 'Producto 7', price: 54.99, image: 'https://via.placeholder.com/300x300', category: 'category1' },
-    { id: 8, name: 'Producto 8', price: 64.99, image: 'https://via.placeholder.com/300x300', category: 'category2' },
+    { id: 1, name: 'Producto 1', price: 19.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 1.png', category: 'category1' },
+    { id: 2, name: 'Producto 2', price: 29.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 2.png', category: 'category2' },
+    { id: 3, name: 'Producto 3', price: 39.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 3.png', category: 'category3' },
+    { id: 4, name: 'Producto 4', price: 24.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 4.png', category: 'category1' },
+    { id: 5, name: 'Producto 5', price: 34.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 5.png', category: 'category2' },
+    { id: 6, name: 'Producto 6', price: 44.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 6.png', category: 'category3' },
+    { id: 7, name: 'Producto 7', price: 54.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 7.png', category: 'category1' },
+    { id: 8, name: 'Producto 8', price: 64.99, image: 'https://clientesweb.github.io/SassenachTienda/img/producto 8.png', category: 'category2' },
 ];
 
 const featuredProducts = products.slice(0, 4);
