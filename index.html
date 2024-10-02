@@ -35,11 +35,20 @@
             transform: translateY(0);
         }
         .carousel-item {
-            display: none;
+            display: none; /* Ocultar elementos no activos */
         }
+
         .carousel-item.active {
-            display: block;
+            display: block; /* Mostrar solo el elemento      activo */
         }
+
+       /* Para asegurar que las imágenes llenen el espacio correctamente */
+         img {
+             display: block; /* Evitar el espacio extra en la parte inferior */
+             width: 100%; /* Asegurar que la imagen tome el 100% del ancho del contenedor */
+             height: auto; /* Mantener la relación de aspecto */
+             object-fit: cover; /* Hacer que la imagen cubra el contenedor */
+}
         .slide-in {
             animation: slideIn 0.5s ease-out;
         }
@@ -135,22 +144,27 @@
         </div>
     </div>
 </section>
-        <section id="featured" class="py-10 md:py-16 animate-on-scroll">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Productos Destacados</h2>
-                <div class="relative">
-                    <div class="featured-slider overflow-x-auto flex space-x-4 pb-4" id="featured-slider">
-                        <!-- Los productos destacados se cargarán dinámicamente aquí -->
-                    </div>
-                    <button id="prev-featured" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition duration-300">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button id="next-featured" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition duration-300">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+        <section id="hero" class="bg-gray-200">
+    <div class="container mx-auto px-4">
+        <div id="hero-carousel" class="relative overflow-hidden w-full h-[600px] rounded-lg shadow-lg" style="max-width: 1920px;">
+            <div class="carousel-item active">
+                <img src="https://clientesweb.github.io/SassenachTienda/img/baner0.jpg" alt="Hero 1" class="w-full h-full object-cover">
             </div>
-        </section>
+            <div class="carousel-item">
+                <img src="https://clientesweb.github.io/SassenachTienda/img/baner1.jpg" alt="Hero 2" class="w-full h-full object-cover">
+            </div>
+            <div class="carousel-item">
+                <img src="https://clientesweb.github.io/SassenachTienda/img/baner2.jpg" alt="Hero 3" class="w-full h-full object-cover">
+            </div>
+            <button id="prev-slide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 transition duration-300">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-slide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 transition duration-300">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
 
         <section id="products" class="py-10 md:py-16 animate-on-scroll">
             <div class="container mx-auto px-4">
