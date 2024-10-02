@@ -1,6 +1,6 @@
 // Simulación de datos de productos
 const products = [
-    { id: 1, name: 'Producto 1', price: 19.99, image: 'https://via.placeholder.com/300x300', category: 'category1' },
+    { id: 1, name: 'Producto 1', price: 19.99, image: 'https://clientesweb.github.io/SassenachTienda/img/Tintura Cannabis.png', category: 'category1' },
     { id: 2, name: 'Producto 2', price: 29.99, image: 'https://via.placeholder.com/300x300', category: 'category2' },
     { id: 3, name: 'Producto 3', price: 39.99, image: 'https://via.placeholder.com/300x300', category: 'category3' },
     { id: 4, name: 'Producto 4', price: 24.99, image: 'https://via.placeholder.com/300x300', category: 'category1' },
